@@ -10,8 +10,8 @@ drop table if exists Disks cascade;
 
 create table Clients (
     Client_id int generated always as identity,
-    Client_name text not null,
-    Client_phone varchar(15),
+    Client_name text,
+    Client_phone text,
     primary key(Client_id)
 );
 
