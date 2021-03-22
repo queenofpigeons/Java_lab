@@ -1,4 +1,8 @@
 import DAO.ClientsDAO;
+import DAO.DisksDAO;
+import DAO.OrdersDAO;
+import DAO.MoviesDAO;
+import DAO.TypesDAO;
 import classes.Clients;
 
 public class Main {

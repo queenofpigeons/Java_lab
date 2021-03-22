@@ -2,6 +2,9 @@ package utils;
 
 import classes.Clients;
 import classes.Orders;
+import classes.Types;
+import classes.Disks;
+import classes.Movies;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -18,6 +21,9 @@ public class HibernateSessionFactoryUtil {
                 Configuration configuration = new Configuration().configure();
                 configuration.addAnnotatedClass(Clients.class);
                 configuration.addAnnotatedClass(Orders.class);
+                configuration.addAnnotatedClass(Types.class);
+                configuration.addAnnotatedClass(Disks.class);
+                configuration.addAnnotatedClass(Movies.class);
                 StandardServiceRegistryBuilder builder =
                         new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
                 sessionFactory = configuration.buildSessionFactory(builder.build());

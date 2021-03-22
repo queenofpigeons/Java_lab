@@ -11,5 +11,11 @@
         <property name="connection.password">123</property>
         <property name="show_sql">true</property>
 
+        <mapping class="classes.Clients" />
+        <mapping class="classes.Orders" />
+        <mapping class="classes.Disks" />
+        <mapping class="classes.Movies" />
+        <mapping class="classes.Types" />
+
     </session-factory>
 </hibernate-configuration>
