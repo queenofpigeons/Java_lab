@@ -1,8 +1,10 @@
 package DAO;
 
+import classes.Movies;
 import classes.Orders;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import utils.HibernateSessionFactoryUtil;
 
 import javax.persistence.criteria.CriteriaBuilder;
@@ -46,5 +48,18 @@ public class OrdersDAO {
         List<Orders> data = session.createQuery(criteria).getResultList();
         session.close();
         return data;
+    }
+
+    public List<Orders> selectUnreturnedOrders() {
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Query<Orders> query = session.createQuery("FROM Orders WHERE order_returned is null");
+        return query.getResultList();
+    }
+
+    public List<Orders> selectOrdersByStatus(boolean order_is_paid) {
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Query<Orders> query = session.createQuery("FROM Orders WHERE order_is_paid = :param", Orders.class)
+                .setParameter("param", order_is_paid);
+        return query.getResultList();
     }
 }

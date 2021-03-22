@@ -9,7 +9,7 @@ import java.util.List;
 public class Movies {
     private int movie_id;
     private String movie_name;
-    private java.sql.Date movie_date;
+    private int movie_date;
     private String movie_director;
 
     private List<Disks> order_disks;
@@ -17,7 +17,7 @@ public class Movies {
     public Movies() {
     }
 
-    public Movies(int movie_id, String movie_name, Date movie_date, String movie_director, List<Disks> order_disks) {
+    public Movies(int movie_id, String movie_name, int movie_date, String movie_director, List<Disks> order_disks) {
         this.movie_id = movie_id;
         this.movie_name = movie_name;
         this.movie_date = movie_date;
@@ -46,11 +46,11 @@ public class Movies {
     }
 
     @Column(name = "movie_date")
-    public Date getMovie_date() {
+    public int getMovie_date() {
         return movie_date;
     }
 
-    public void setMovie_date(Date movie_date) {
+    public void setMovie_date(int movie_date) {
         this.movie_date = movie_date;
     }
 

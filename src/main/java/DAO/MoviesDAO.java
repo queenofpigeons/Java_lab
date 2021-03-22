@@ -1,8 +1,11 @@
 package DAO;
 
+import classes.Clients;
 import classes.Movies;
+import classes.Orders;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import utils.HibernateSessionFactoryUtil;
 
 import javax.persistence.criteria.CriteriaBuilder;
@@ -46,5 +49,19 @@ public class MoviesDAO {
         List<Movies> data = session.createQuery(criteria).getResultList();
         session.close();
         return data;
+    }
+
+    public List<Movies> selectMoviesByYear(int movie_date) {
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Query<Movies> query = session.createQuery("FROM Movies WHERE movie_date = :param", Movies.class)
+                .setParameter("param", movie_date);
+        return query.getResultList();
+    }
+
+    public List<Movies> selectMoviesByDirector(String movie_director) {
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Query<Movies> query = session.createQuery("FROM Movies WHERE movie_director = :param", Movies.class)
+                .setParameter("param", movie_director);
+        return query.getResultList();
     }
 }
