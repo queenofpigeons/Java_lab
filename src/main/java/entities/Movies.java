@@ -1,7 +1,6 @@
-package classes;
+package entity;
 
 import javax.persistence.*;
-import java.sql.Date;
 import java.util.List;
 
 @Entity
@@ -12,7 +11,7 @@ public class Movies {
     private int movie_date;
     private String movie_director;
 
-    private List<Disks> order_disks;
+    private List<Disks> movie_disks;
 
     public Movies() {
     }
@@ -22,7 +21,7 @@ public class Movies {
         this.movie_name = movie_name;
         this.movie_date = movie_date;
         this.movie_director = movie_director;
-        this.order_disks = order_disks;
+        this.movie_disks = order_disks;
     }
 
     @Id
@@ -64,11 +63,11 @@ public class Movies {
     }
 
     @OneToMany(mappedBy = "movie", cascade = CascadeType.ALL, orphanRemoval = true)
-    public List<Disks> getOrder_disks() {
-        return order_disks;
+    public List<Disks> getMovie_disks() {
+        return movie_disks;
     }
 
-    public void setOrder_disks(List<Disks> order_disks) {
-        this.order_disks = order_disks;
+    public void setMovie_disks(List<Disks> order_disks) {
+        this.movie_disks = order_disks;
     }
 }
