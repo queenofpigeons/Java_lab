@@ -19,7 +19,7 @@ insert into Movies(Movie_name, Movie_date, Movie_director) values
     ('American Psycho', '2000', 'Mary Harron'),
     ('Blade Runner 2049', '2017', 'Denis Villeneuve');
 
-insert into Disks(Disk_order, Disc_movie, Disc_type) values
+insert into Disks(Disk_order, Disk_movie, Disk_type) values
     (1, 1, 1),
     (null, 2, 2),
     (2, 1, 1),

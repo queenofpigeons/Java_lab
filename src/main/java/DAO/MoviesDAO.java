@@ -1,8 +1,7 @@
 package DAO;
 
-import classes.Clients;
-import classes.Movies;
-import classes.Orders;
+import entities.Clients;
+import entities.Movies;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -13,8 +12,8 @@ import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 
 public class MoviesDAO {
-    public MoviesDAO findById(int id) {
-        return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(MoviesDAO.class, id);
+    public Movies findById(int id) {
+        return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(Movies.class, id);
     }
 
     public void save(Movies movie) {
@@ -62,6 +61,14 @@ public class MoviesDAO {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Query<Movies> query = session.createQuery("FROM Movies WHERE movie_director = :param", Movies.class)
                 .setParameter("param", movie_director);
+        return query.getResultList();
+    }
+
+    public List<Movies> selectUnreturnedMoviesByClient(Clients client) {
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Query<Movies> query = session.createQuery("select mov FROM Clients cli" +
+                " JOIN cli.client_orders ord JOIN ord.order_disks ds JOIN ds.movie mov" +
+                " WHERE ord.order_returned IS NULL", Movies.class);
         return query.getResultList();
     }
 }

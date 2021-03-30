@@ -1,10 +1,10 @@
 package utils;
 
-import classes.Clients;
-import classes.Orders;
-import classes.Types;
-import classes.Disks;
-import classes.Movies;
+import entities.Clients;
+import entities.Orders;
+import entities.Types;
+import entities.Disks;
+import entities.Movies;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;

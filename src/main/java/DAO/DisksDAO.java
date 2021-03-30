@@ -1,6 +1,6 @@
 package DAO;
 
-import classes.Disks;
+import entities.Disks;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import utils.HibernateSessionFactoryUtil;
@@ -10,8 +10,8 @@ import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 
 public class DisksDAO {
-    public DisksDAO findById(int id) {
-        return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(DisksDAO.class, id);
+    public Disks findById(int id) {
+        return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(Disks.class, id);
     }
 
     public void save(Disks disk) {

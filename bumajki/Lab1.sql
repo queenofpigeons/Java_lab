@@ -25,7 +25,7 @@ create table Orders(
     primary key(Order_id),
     constraint ord_cli
         foreign key(Order_client)
-            references Clients(Client_id)
+            references Clients(Client_id) on delete cascade
 );
 
 create table Types(
@@ -46,17 +46,17 @@ create table Movies(
 create table Disks(
     Disk_id int generated always as identity,
     Disk_order int,
-    Disc_movie int not null,
-    Disc_type int not null,
+    Disk_movie int not null,
+    Disk_type int not null,
     primary key(Disk_id),
     constraint disk_ord
         foreign key(Disk_order)
-            references Orders(Order_id),
+            references Orders(Order_id) on delete cascade,
     constraint disk_mov
-        foreign key(Disc_movie)
-            references Movies(Movie_id),
+        foreign key(Disk_movie)
+            references Movies(Movie_id) on delete cascade,
     constraint disk_typ
-        foreign key(Disc_type)
-            references Types(Type_id)
+        foreign key(Disk_type)
+            references Types(Type_id) on delete cascade
 );
 

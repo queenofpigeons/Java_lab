@@ -1,11 +1,22 @@
-package entity;
+package entities;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "movies")
 public class Movies {
+    @Override
+    public String toString() {
+        return "Movies{" +
+                "movie_id=" + movie_id +
+                ", movie_name='" + movie_name + '\'' +
+                ", movie_date=" + movie_date +
+                ", movie_director='" + movie_director + '\'' +
+                '}';
+    }
+
     private int movie_id;
     private String movie_name;
     private int movie_date;
@@ -16,8 +27,7 @@ public class Movies {
     public Movies() {
     }
 
-    public Movies(int movie_id, String movie_name, int movie_date, String movie_director, List<Disks> order_disks) {
-        this.movie_id = movie_id;
+    public Movies(String movie_name, int movie_date, String movie_director, List<Disks> order_disks) {
         this.movie_name = movie_name;
         this.movie_date = movie_date;
         this.movie_director = movie_director;
@@ -69,5 +79,18 @@ public class Movies {
 
     public void setMovie_disks(List<Disks> order_disks) {
         this.movie_disks = order_disks;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Movies movies = (Movies) o;
+        return movie_id == movies.movie_id && movie_date == movies.movie_date && Objects.equals(movie_name, movies.movie_name) && Objects.equals(movie_director, movies.movie_director);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(movie_id, movie_name, movie_date, movie_director);
     }
 }

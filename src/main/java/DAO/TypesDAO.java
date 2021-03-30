@@ -1,6 +1,7 @@
 package DAO;
 
-import classes.Types;
+import entities.Types;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import utils.HibernateSessionFactoryUtil;
@@ -10,11 +11,11 @@ import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 
 public class TypesDAO {
-    public TypesDAO findById(int id) {
-        return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(TypesDAO.class, id);
+    public Types findById(int id) {
+        return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(Types.class, id);
     }
 
-    public void save(TypesDAO type) {
+    public void save(Types type) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction tx1 = session.beginTransaction();
         session.save(type);
@@ -22,7 +23,7 @@ public class TypesDAO {
         session.close();
     }
 
-    public void update(TypesDAO type) {
+    public void update(Types type) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction tx1 = session.beginTransaction();
         session.update(type);
@@ -30,7 +31,7 @@ public class TypesDAO {
         session.close();
     }
 
-    public void delete(TypesDAO type) {
+    public void delete(Types type) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction tx1 = session.beginTransaction();
         session.delete(type);
@@ -38,12 +39,12 @@ public class TypesDAO {
         session.close();
     }
 
-    public List<TypesDAO> loadAll() {
+    public List<Types> loadAll() {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         CriteriaBuilder builder = session.getCriteriaBuilder();
-        CriteriaQuery<TypesDAO> criteria = builder.createQuery(TypesDAO.class);
-        criteria.from(TypesDAO.class);
-        List<TypesDAO> data = session.createQuery(criteria).getResultList();
+        CriteriaQuery<Types> criteria = builder.createQuery(Types.class);
+        criteria.from(Types.class);
+        List<Types> data = session.createQuery(criteria).getResultList();
         session.close();
         return data;
     }

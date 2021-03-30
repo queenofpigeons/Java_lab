@@ -1,25 +1,26 @@
-package entity;
+package entities;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "types")
 public class Types {
+
     private int type_id;
     private String type_name;
     private int type_cost;
 
-    private List<Disks> order_disks;
+    private List<Disks> type_disks;
 
     public Types() {
     }
 
-    public Types(int type_id, String type_name, int type_cost, List<Disks> order_disks) {
-        this.type_id = type_id;
+    public Types(String type_name, int type_cost, List<Disks> order_disks) {
         this.type_name = type_name;
         this.type_cost = type_cost;
-        this.order_disks = order_disks;
+        this.type_disks = order_disks;
     }
 
     @Id
@@ -52,11 +53,24 @@ public class Types {
     }
 
     @OneToMany(mappedBy = "type", cascade = CascadeType.ALL, orphanRemoval = true)
-    public List<Disks> getOrder_disks() {
-        return order_disks;
+    public List<Disks> getType_disks() {
+        return type_disks;
     }
 
-    public void setOrder_disks(List<Disks> order_disks) {
-        this.order_disks = order_disks;
+    public void setType_disks(List<Disks> order_disks) {
+        this.type_disks = order_disks;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Types types = (Types) o;
+        return type_id == types.type_id && type_cost == types.type_cost && Objects.equals(type_name, types.type_name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(type_id, type_name, type_cost);
     }
 }

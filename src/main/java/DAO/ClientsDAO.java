@@ -1,11 +1,9 @@
 package DAO;
 
-import classes.Clients;
-import classes.Orders;
-import classes.Movies;
+import entities.Clients;
+import entities.Orders;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.query.Query;
 import utils.HibernateSessionFactoryUtil;
 
 import javax.persistence.criteria.CriteriaBuilder;
@@ -13,8 +11,8 @@ import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 
 public class ClientsDAO {
-    public ClientsDAO findById(int id) {
-        return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(ClientsDAO.class, id);
+    public Clients findById(int id) {
+        return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(Clients.class, id);
     }
 
     public void save(Clients client) {
@@ -49,13 +47,5 @@ public class ClientsDAO {
         List<Clients> data = session.createQuery(criteria).getResultList();
         session.close();
         return data;
-    }
-
-    public List<Orders> selectOrdersByClientId(int client_id) {
-        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
-        Clients client = session.get(Clients.class, client_id);
-        List<Orders> result = client.getClient_orders();
-        session.close();
-        return result;
     }
 }
