@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Disk page</title>
+</head>
+<body>
+<p><a href="/disks">Disks</a></p>
+
+<div id="diskInfo_text">
+    <p th:text="'Disk id: ' + ${disk.getDisk_id()}"></p>
+    <p th:text="'Movie id: ' + ${disk.getMovie().getMovie_id()}"></p>
+    <p th:text="'Type id: ' + ${disk.getType().getType_id()}"></p>
+    <p th:text="'Order id: ' + ${disk.getOrder()?.getOrder_id()}"></p>
+</div>
+
+<form method="post" action="/diskAdd">
+    <input type="hidden" name="disk_id" th:value="${disk.getDisk_id()}"/>
+    <button id="edit_button" type="submit">Edit disk</button>
+</form>
+
+<form method="post" action="/diskDelete">
+    <input type="hidden" name="disk_id" th:value="${disk.getDisk_id()}"/>
+    <button id="delete_button" type="submit">Delete disk</button>
+</form>
+
+</body>
+</html>

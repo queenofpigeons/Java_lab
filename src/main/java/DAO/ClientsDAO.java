@@ -12,7 +12,10 @@ import java.util.List;
 
 public class ClientsDAO {
     public Clients findById(int id) {
-        return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(Clients.class, id);
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Clients client = session.get(Clients.class, id);
+        session.close();
+        return client;
     }
 
     public void save(Clients client) {

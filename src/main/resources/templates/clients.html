@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Client list</title>
+    <style>
+        body{
+            background-color: #cec5fa;
+        }
+    </style>
+</head>
+<body>
+<p><a href="/">Main Page</a></p>
+
+<form method="post" action="/clientAdd">
+    <button id="clientAdd_button" type="submit">Add client</button>
+</form>
+
+<table>
+    <thead>
+    <tr>
+        <th scope="col"> Name </th>
+        <th scope="col"> Phone </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="client : ${clients}">
+        <td><a th:href="'/client?client_id=' + ${client.getClient_id()}"> <span
+                th:text="${client.getClient_name()}"> </span> </a></td>
+        <td><span th:text="${client.getClient_phone()}"> </span></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

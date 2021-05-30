@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Client page</title>
+</head>
+<body>
+<p><a href="/clients">Clients</a></p>
+<div id="clientInfo_text">
+  <p th:text="'Client id: ' + ${client.getClient_id()}"></p>
+  <p th:text="'Client name: ' + ${client.getClient_name()}"></p>
+  <p th:text="'Phone: ' + ${client.getClient_phone()}"></p>
+  <p th:text="'Orders: '"></p>
+  <tr th:each="order : ${client.getClient_orders()}">
+    <td><a th:href="'/order?order_id=' + ${order.getOrder_id()}"> <span
+            th:text="'id: ' + ${order.getOrder_id()}"> </span> </a></td>
+  </tr>
+</div>
+<form method="post" action="/clientAdd">
+  <input type="hidden" name="client_id" th:value="${client.getClient_id()}"/>
+  <button id="edit_button" type="submit">Edit client</button>
+</form>
+
+<form method="post" action="/clientDelete">
+  <input type="hidden" name="client_id" th:value="${client.getClient_id()}"/>
+  <button id="delete_button" type="submit">Delete client</button>
+</form>
+
+</body>
+</html>

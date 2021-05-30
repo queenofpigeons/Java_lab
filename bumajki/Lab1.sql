@@ -20,7 +20,7 @@ create table Orders(
     Order_client int not null,
     Order_issued date not null,
     Order_returned date check (Order_issued <= Order_returned),
-    Order_cost float not null check (Order_cost > 0) default 0,
+    Order_cost float not null check (Order_cost >= 0),
     Order_is_paid boolean default false,
     primary key(Order_id),
     constraint ord_cli
@@ -31,7 +31,7 @@ create table Orders(
 create table Types(
     Type_id int generated always as identity,
     Type_name text not null,
-    Type_cost int not null check(Type_cost > 0),
+    Type_cost int not null check(Type_cost >= 0),
     primary key(Type_id)
 );
 

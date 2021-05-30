@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order list</title>
+</head>
+<body>
+
+<p><a href="/">Main Page</a></p>
+<form method="post" action="/orderAdd">
+  <button id="orderAdd_button" type="submit">Add order</button>
+</form>
+
+<table>
+  <thead>
+  <tr>
+    <th scope="col"> Order id</th>
+    <th scope="col"> Client id</th>
+    <th scope="col"> Issued</th>
+    <th scope="col"> Returned</th>
+    <th scope="col"> Cost</th>
+    <th scope="col"> Is paid</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="order : ${orders}">
+    <td><a th:href="'/order?order_id=' + ${order.getOrder_id()}"> <span
+            th:text="${order.getOrder_id()}"> </span> </a></td>
+    <td><span th:text="${order.getClient().getClient_id()}"> </span></td>
+    <td><span th:text="${order.getOrder_issued()}"> </span></td>
+    <td><span th:text="${order.getOrder_returned()}"> </span></td>
+    <td><span th:text="${order.getOrder_cost()}"> </span></td>
+    <td><span th:text="${order.isOrder_is_paid()}"> </span></td>
+  </tr>
+  </tbody>
+</table>
+
+</body>
+</html>

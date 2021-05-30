@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add movie</title>
+</head>
+<body>
+
+<form action="/movieSave" method="post">
+    <input type="hidden" name="movie_id" th:value="${movie.getMovie_id()}"/>
+
+    <label for="movie_name">Movie name:</label>
+    <input type="text" id="movie_name" name="movie_name" required th:value="${movie.getMovie_name()}"><br><br>
+
+    <label for="movie_director">Movie director:</label>
+    <input type="text" id="movie_director" name="movie_director" required th:value="${movie.getMovie_director()}"><br><br>
+
+    <label for="movie_date">Movie year:</label>
+    <input type="text" id="movie_date" name="movie_date" required th:value="${movie.getMovie_date()}"><br><br>
+
+    <input id="submit_button" type="submit" value="Submit">
+</form>
+
+</body>
+</html>

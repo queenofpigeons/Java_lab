@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add type</title>
+</head>
+<body>
+
+<form action="/typeSave" method="post">
+  <input type="hidden" name="type_id" th:value="${type.getType_id()}"/>
+
+  <label for="type_name">Type name:</label>
+  <input type="text" id="type_name" name="type_name" required th:value="${type.getType_name()}"><br><br>
+
+  <label for="type_cost">Cost:</label>
+  <input type="text" id="type_cost" name="type_cost" required th:value="${type.getType_cost()}"><br><br>
+
+  <input id="submit_button" type="submit" value="Submit">
+</form>
+
+</body>
+</html>

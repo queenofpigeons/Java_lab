@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Type page</title>
+</head>
+<body>
+<p><a href="/types">Types</a></p>
+<div id="typeInfo_text">
+    <p th:text="'Type id: ' + ${type.getType_id()}"></p>
+    <p th:text="'Name: ' + ${type.getType_name()}"></p>
+    <p th:text="'Cost: ' + ${type.getType_cost()}"></p>
+</div>
+
+<form method="post" action="/typeAdd">
+  <input type="hidden" name="type_id" th:value="${type.getType_id()}"/>
+  <button id="edit_button" type="submit">Edit type</button>
+</form>
+
+<form method="post" action="/typeDelete">
+  <input type="hidden" name="type_id" th:value="${type.getType_id()}"/>
+  <button id="delete_button" type="submit">Delete type</button>
+</form>
+
+</body>
+</html>

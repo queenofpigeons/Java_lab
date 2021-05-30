@@ -19,7 +19,7 @@ public class Movies {
 
     private int movie_id;
     private String movie_name;
-    private int movie_date;
+    private Integer movie_date;
     private String movie_director;
 
     private List<Disks> movie_disks;
@@ -27,11 +27,11 @@ public class Movies {
     public Movies() {
     }
 
-    public Movies(String movie_name, int movie_date, String movie_director, List<Disks> order_disks) {
+    public Movies(String movie_name, int movie_date, String movie_director, List<Disks> movie_disks) {
         this.movie_name = movie_name;
         this.movie_date = movie_date;
         this.movie_director = movie_director;
-        this.movie_disks = order_disks;
+        this.movie_disks = movie_disks;
     }
 
     @Id
@@ -55,7 +55,7 @@ public class Movies {
     }
 
     @Column(name = "movie_date")
-    public int getMovie_date() {
+    public Integer getMovie_date() {
         return movie_date;
     }
 

@@ -1,5 +1,6 @@
 package DAO;
 
+import entities.Orders;
 import entities.Types;
 
 import org.hibernate.Session;
@@ -12,7 +13,10 @@ import java.util.List;
 
 public class TypesDAO {
     public Types findById(int id) {
-        return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(Types.class, id);
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Types type = session.get(Types.class, id);
+        session.close();
+        return type;
     }
 
     public void save(Types type) {

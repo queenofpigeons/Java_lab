@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie page</title>
+</head>
+<body>
+<p><a href="/movies">Movies</a></p>
+
+<div id="movieInfo_text">
+    <p th:text="'Movie id: ' + ${movie.getMovie_id()}"></p>
+    <p th:text="'Name: ' + ${movie.getMovie_name()}"></p>
+    <p th:text="'Director: ' + ${movie.getMovie_director()}"></p>
+    <p th:text="'Year: ' + ${movie.getMovie_date()}"></p>
+</div>
+
+<form method="post" action="/movieAdd">
+    <input type="hidden" name="movie_id" th:value="${movie.getMovie_id()}"/>
+    <button id="edit_button" type="submit">Edit movie</button>
+</form>
+
+<form method="post" action="/movieDelete">
+    <input type="hidden" name="movie_id" th:value="${movie.getMovie_id()}"/>
+    <button id="delete_button" type="submit">Delete movie</button>
+</form>
+
+</body>
+</html>

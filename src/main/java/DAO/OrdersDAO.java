@@ -1,5 +1,6 @@
 package DAO;
 
+import entities.Movies;
 import entities.Orders;
 import entities.Clients;
 import org.hibernate.Session;
@@ -14,7 +15,10 @@ import java.util.List;
 
 public class OrdersDAO {
     public Orders findById(int id) {
-        return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(Orders.class, id);
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Orders order = session.get(Orders.class, id);
+        session.close();
+        return order;
     }
 
     public void save(Orders order) {

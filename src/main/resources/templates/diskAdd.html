@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add disk</title>
+</head>
+<body>
+
+<form action="/diskSave" method="post">
+    <input type="hidden" name="disk_id" th:value="${disk.getDisk_id()}"/>
+
+    <label for="disk_movie">Movie id:</label>
+    <input type="text" id="disk_movie" name="disk_movie" required th:value="${disk.getMovie()?.getMovie_id()}"><br><br>
+
+    <label for="disk_order">Order id:</label>
+    <input type="text" id="disk_order" name="disk_order" required="false" th:value="${disk.getOrder()?.getOrder_id()}"><br><br>
+
+    <label for="disk_type">Type id:</label>
+    <input type="text" id="disk_type" name="disk_type" required th:value="${disk.getType()?.getType_id()}"><br><br>
+
+    <input id="submit_button" type="submit" value="Submit">
+</form>
+
+</body>
+</html>

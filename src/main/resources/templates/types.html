@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Type list</title>
+</head>
+<body>
+<p><a href="/">Main Page</a></p>
+
+<form method="post" action="/typeAdd">
+  <button id="typeAdd_button" type="submit">Add type</button>
+</form>
+
+<table>
+  <thead>
+  <tr>
+    <th scope="col"> Name </th>
+    <th scope="col"> Cost </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="type : ${types}">
+    <td><a th:href="'/type?ctype_id=' + ${type.getType_id()}"> <span
+            th:text="${type.getType_name()}"> </span> </a></td>
+    <td><span th:text="${type.getType_cost()}"> </span></td>
+  </tr>
+  </tbody>
+</table>
+
+</body>
+</html>

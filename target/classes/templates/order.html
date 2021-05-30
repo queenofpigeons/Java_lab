@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Order page</title>
+</head>
+<body>
+
+<p><a href="/orders">Orders</a></p>
+<div id="orderInfo_text">
+    <p th:text="'Order id: ' + ${order.getOrder_id()}"></p>
+    <p th:text="'Client id: ' + ${order.getClient()?.getClient_id()}"></p>
+    <p th:text="'Issue date: ' + ${order.getOrder_issued()}"></p>
+    <p th:text="'Return date: ' + ${order.getOrder_returned()}"></p>
+    <p th:text="'Cost: ' + ${order.getOrder_cost()}"></p>
+    <p th:text="'Is paid: ' + ${order.isOrder_is_paid()}"></p>
+</div>
+
+<form method="post" action="/ordertAdd">
+  <input type="hidden" name="order_id" th:value="${order.getOrder_id()}"/>
+  <button id="edit_button" type="submit">Edit order</button>
+</form>
+
+<form method="post" action="/orderDelete">
+  <input type="hidden" name="order_id" th:value="${order.getOrder_id()}"/>
+  <button id="delete_button" type="submit">Delete order</button>
+</form>
+
+</body>
+</html>

@@ -1,5 +1,6 @@
 package DAO;
 
+import entities.Clients;
 import entities.Disks;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -11,7 +12,10 @@ import java.util.List;
 
 public class DisksDAO {
     public Disks findById(int id) {
-        return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(Disks.class, id);
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Disks disk = session.get(Disks.class, id);
+        session.close();
+        return disk;
     }
 
     public void save(Disks disk) {

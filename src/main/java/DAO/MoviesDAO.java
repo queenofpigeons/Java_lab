@@ -1,6 +1,7 @@
 package DAO;
 
 import entities.Clients;
+import entities.Disks;
 import entities.Movies;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -13,7 +14,10 @@ import java.util.List;
 
 public class MoviesDAO {
     public Movies findById(int id) {
-        return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(Movies.class, id);
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        Movies movie = session.get(Movies.class, id);
+        session.close();
+        return movie;
     }
 
     public void save(Movies movie) {

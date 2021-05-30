@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Movie list</title>
+</head>
+<body>
+
+<p><a href="/">Main Page</a></p>
+<form method="post" action="/movieAdd">
+    <button id="movieAdd_button" type="submit">Add movie</button>
+</form>
+
+<table>
+    <thead>
+    <tr>
+        <th scope="col"> Name</th>
+        <th scope="col"> Director</th>
+        <th scope="col"> Year</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="movie : ${movies}">
+        <td><a th:href="'/movie?movie_id=' + ${movie.getMovie_id()}"> <span
+                th:text="${movie.getMovie_name()}"> </span> </a></td>
+        <td><span th:text="${movie.getMovie_director()}"> </span></td>
+        <td><span th:text="${movie.getMovie_date()}"> </span></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

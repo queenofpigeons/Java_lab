@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add order</title>
+</head>
+<body>
+
+<form action="/orderSave" method="post">
+  <input type="hidden" name="order_id" th:value="${order.getOrder_id()}"/>
+
+  <label for="order_client">Client id:</label>
+  <input type="text" id="order_client" name="order_client" required th:value="${order.getClient()?.getClient_id()}"><br><br>
+
+  <label for="order_issued">Issue date:</label>
+  <input type="text" id="order_issued" name="order_issued" required th:value="${order.getOrder_issued()}"><br><br>
+
+  <label for="order_returned">Return date:</label>
+  <input type="text" id="order_returned" name="order_returned" th:value="${order.getOrder_returned()}"><br><br>
+
+  <label for="order_cost">Cost:</label>
+  <input type="text" id="order_cost" name="order_cost" required th:value="${order.getOrder_cost()}"><br><br>
+
+  <label for="order_is_paid">Is paid:</label>
+  <input type="text" id="order_is_paid" name="order_is_paid" required th:value="${order.isOrder_is_paid()}"><br><br>
+
+  <input id="submit_button" type="submit" value="Submit">
+</form>
+
+</body>
+</html>
