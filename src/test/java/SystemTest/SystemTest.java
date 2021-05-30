@@ -195,8 +195,8 @@ public class SystemTest {
         Assert.assertEquals(driver.getTitle(), "Type list");
     }
 
-   /* @AfterClass
+    @AfterClass
     public void clear() {
         driver.quit();
-    }*/
+    }
 }
